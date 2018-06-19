@@ -1,0 +1,1050 @@
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px
+);
+
+// keywords
+$media-expressions: (
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// ligatured operators ≥ ≤
+
+@import 'vendors/include-media';
+@import 'vendors/normalize';
+
+@import 'base/variables';
+@import 'base/functions';
+@import 'base/mixins';
+@import 'base/helpers';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/forms';
+@import 'vendors/icons';
+@import 'vendors/fonts';
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+
+*h3 {
+  font: bold 20px Merriweather;
+  padding: 18px 0 18px;
+  text-transform: uppercase;
+  color: #646565;
+
+  @include media("<desktop") {
+    font: bold 17px Merriweather;
+    padding: 14px 0 14px;
+  }
+  @include media("<tablet") {
+    font: bold 14px Merriweather;
+    padding: 10px 0 10px;
+  }
+}
+
+#wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1140px; 
+  margin: 0 auto;
+  padding: 0 15px; 
+}
+
+*ul {
+  @extend %listreset;
+}
+a {
+  text-decoration: none;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~стили для хедера~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.header-holder {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 65px 0;
+  align-items: center; 
+  
+  @include media("<desktop") {
+    padding: 65px 40px;
+  }  
+  @include media("<tablet") {
+    padding: 30px;
+  }
+
+  .logo {
+    transition: .7s;
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  .navigation {
+
+    @include media("<tablet") {
+      position: absolute;
+      left:100%;
+      width: 100%;
+      top: 100%;
+      background: #E97272;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .5s linear;
+
+      .menu-active & {
+        left: 0;
+        opacity: 1;
+        visibility: visible; 
+      }
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      padding: 10px;
+      font-size: 20px;
+      color: #323333;
+
+      @include media("<tablet") {
+        display: block;
+        text-align: center;
+      }
+    } 
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: bold;
+      
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.menu-open { 
+  display: none;
+
+  @include media("<tablet") {
+    display: block;
+    max-width: 40px;
+  }
+}
+//`````````````````````````````MAIN``````````````````````````````````````````````
+
+.visual-section {
+  text-align: center;
+  position: relative;
+  padding: 305px 0 195px;
+  background-color: #eff0f2;
+  
+  @include media("<desktop") {
+    padding: 200px 0 50px;
+  }
+  @include media("<tablet") {
+      padding: 135px 0 50px;
+  }
+
+  h1 {
+    font: bold 45px Montserrat, sans-serif;
+    color: $light-gray;
+    text-transform: uppercase;
+    margin: 0 0 156px;
+    text-shadow: 0.05em 0.1em 0.3em;
+    
+    @include media("<desktop") {
+      font-size: 30px;
+      margin: 0 30px 70px;
+    }
+    @include media("<tablet") {
+      font-size: 25px;
+      margin: 0 0 30px;
+    }
+
+    span {
+      background: rgba($coral-text, 0.5);
+    }
+  }
+
+  .btn {
+    border: 2px solid $light-gray;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    color: $light-gray;
+    font: 18px Montserrat, sans-serif;
+    padding: 20px 50px;
+    text-transform: uppercase;
+    transition: .5s;
+
+    &:hover {
+      font: 19px Montserrat, sans-serif;
+      border: 2px solid red;
+      color: $black;
+      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+      background: #BDBDBD;
+    }
+    
+    @include media("<desktop") {
+      font-size: 15px;
+      padding: 10px 20px;
+    }
+    @include media("<tablet") {
+      font-size: 10px;
+      padding: 5px 10px;
+
+      &:hover {
+        font: 9px Montserrat, sans-serif;
+        border: 2px solid red;
+        color: $black;
+        clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+      }
+    }
+  }
+
+  .button-pic {
+    position: absolute;
+    right: 220px;
+    bottom: 135px;
+
+    @include media("<desktop") {
+     display:none ;
+    }
+  }
+}
+
+//````````````````````````````````````ABOUT US`````````````````````````````````````
+
+.about-us {
+  background: #f8fafa;
+}
+
+.pt130 {
+  padding: 125px 0 125px;
+  
+  @include media("<desktop") {
+    padding: 10px 0 25px;
+  }
+  @include media("<tablet") {
+    padding: 35px 0 25px;
+  }  
+
+  .title-section {
+    text-transform: uppercase;
+    font: 18px Merriweather;
+    padding-bottom: 130px;
+    text-align: center;
+    color: #848585;
+    
+    @include media("<desktop") {
+      padding-bottom: 3px;
+    }
+    @include media("<tablet") {
+      padding-bottom: 30px;
+      font: 11px Merriweather;
+    } 
+
+    h2 {
+      font: bold 38px Montserrat;
+      padding-bottom: 17px;
+      color: #323333;
+      
+      @include media("<desktop") {
+        font: bold 28px Montserrat;
+        padding: 0 0 10px
+      }
+      @include media("<tablet") {
+        font: bold 18px Montserrat;
+        padding: 0 0 8px;
+      }
+    }
+  }
+}
+
+.article {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.article-col {
+  width: 50%;
+  font-size: 12px;
+  color: #646565;
+  
+  @include media("<desktop") {
+    font-size: 13px;
+  }
+  @include media("<tablet") {
+    font-size: 13px;
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%; //будет уменьшаться относительно родителю при ресайзе
+  }
+
+  h3 {
+    padding: 18px 0 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+
+    @include media("<desktop") {
+      font-size: 18px;
+      padding: 10px 0 10px;
+    }
+    @include media("<tablet") {
+      font-size: 14x;
+      padding: 8px 0 8px;
+    }
+  }
+
+  h4 {
+    font: bold 17px Merriweather;
+    padding: 18px 0 18px;
+    text-transform: uppercase;
+
+    @include media("<desktop") {
+      font-size: 16px;
+      padding: 10px 0 10px;
+    }
+    @include media("<tablet") {
+      font-size: 14px;
+      padding: 8px 0 8px;
+    }
+  }
+
+  p {
+    padding-bottom: 26px;
+    line-height: 2;
+    
+    @include media("<desktop") {
+      padding-bottom: 10px;
+    }
+    @include media("<tablet") {
+      padding-bottom: 6px;
+    }
+  }
+}
+
+//``````````````````````````````````FEATURED`````````````````````````````````
+
+.picture-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 33.33%;
+  padding: 7px;
+  position: relative;
+
+  @include media("<desktop") {
+      width: 50%;
+      padding: 3px;
+  }
+  @include media("<tablet") {
+      width: 100%;
+  }
+
+  &:after {
+    content:'';
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    left: 7px;
+    bottom: 7px;
+    background: $black;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+  }
+
+  &:hover {
+
+    &:after {
+      visibility: visible;
+      opacity: 0.8;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.icecream {
+  transition: all 1.5s linear;
+
+  &:hover {
+    transform: rotate(360deg);
+    transform-origin:bottom right;
+    transition: all 1.5s linear;
+  }
+}
+
+.cards {
+  transform: translateX(0);
+  transition: transform 1s linear;
+
+  &:hover {
+    transform: translate(50%, 50%);
+    transition: transform 1s linear;
+  }
+}
+
+.bottles {
+
+  &:hover {
+  box-shadow: 54px 42px 5px 0px rgba(0,0,0,0.69);
+  }
+}
+
+.book {
+  border-top: 5px double orange;
+  border-right:2px dashed yellow;
+  border-bottom:3px solid red;
+  border-left:4px dotted green;
+  
+  
+  &:hover {
+    border-top: 3px solid red;
+    border-right:5px double orange;
+    border-bottom:4px dotted green;
+    border-left:2px dashed yellow;
+  }
+}
+
+.nine {
+
+  &:hover {
+    perspective: 300px;
+  }
+   img {
+    transform: rotateY(-30deg);
+    transform-origin: right center;
+   }
+}
+
+//``````````````````````````````````````SERVICES```````````````````````````
+
+.our-services {
+  background-color: #f9fbfb;
+}
+
+.block {
+  display: flex;
+  flex-wrap: wrap;
+  
+  .picture-block {
+    min-height: 370px;
+    padding: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    @include media("<desktop") {
+      padding: 3px;
+    }
+    @include media("<tablet") {
+      min-height: 70px;
+    }
+
+    &.w58 {
+      width: 58%;
+
+      @include media("<tablet") {
+       width: 100%;
+      }
+    }
+
+    &.w42 {
+      width: 42%;
+
+      @include media("<tablet") {
+         width: 100%; 
+      }
+    }
+
+    .picture-holder {
+      min-height: 370px;
+      background-size: cover;
+      background-position: 50% 50%;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+
+      @include media("<tablet") {
+        min-height: 70px;
+      }
+
+      &:hover {
+        .block-hover {
+          transform: scale(1);
+        }
+        .block-hover-coral {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+
+.block-hover {
+  background: rgba($black,0.9);
+  min-height: 370px;
+  color: $white;
+  padding: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 100%;
+  transform: scale(0); 
+  transition: transform 0.5s linear;
+
+  @include media("<tablet") {
+    min-height: 70px;
+  }
+
+  a {
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: none;
+  }
+  h3{
+    padding-bottom: 25px;
+  }
+  p {
+    padding-bottom: 50px;
+  }
+  .arrow {
+    position: absolute;
+    left: 180px;
+    bottom: 70px;
+  }
+}
+
+.block-hover-coral {
+  background: rgba($coral-block,0.97);
+  min-height: 370px;
+  color: $white;
+  padding: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 100%;
+  transform: scale(0); 
+  transition: transform 0.5s linear;
+
+  @include media("<tablet") {
+   min-height: 70px;
+  }
+
+  a {
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  p {
+    padding-bottom: 50px;
+  }
+
+  img {
+    position: absolute;
+    left: 75px;
+    bottom: 65px;
+  }
+}
+
+//````````````````````````````````SMALL TEAM```````````````````````````````````
+
+.article-pictures {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.picture-box {
+  width: 33.33%;
+  padding: 7px;
+  min-height: 440px;
+  display: flex;
+  flex-wrap: wrap;
+  
+  @include media("<desktop") {
+    width: 50%;
+    min-height: 300px;
+    padding: 3px;
+  }
+  @include media("<tablet") {
+    width: 50%;
+    min-height: 200px;
+  }
+}
+
+.picture-wraper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 18px;
+  min-height: 440px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: 50% 50%;
+
+  @include media("<desktop") {
+    min-height: 300px;
+    background-position: 10% 10%;
+  }
+  @include media("<tablet") {
+    min-height: 200px;
+  }
+
+  &:hover {
+    .wrap-hover {
+      opacity: 1;  
+      visibility: visible;
+      transform: translateY(0);
+
+    }
+  }
+}
+
+.wrap-hover {
+  background: $light-blue;
+  padding: 40px;
+  position: relative;
+  box-shadow: 7px 7px 16px 0px rgba(0,0,0,0.18);
+  opacity: 0; 
+  visibility: hidden;
+  transition: all 0.3s linear;
+  transform: translateY(125%);
+  
+  @include media("<desktop") {
+    padding: 15px; ;
+  }
+
+  h3 {
+    padding-bottom: 30px;
+
+    @include media("<desktop") {
+      padding-bottom: 1px;
+      font-size: 100%;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    padding-bottom: 25px;
+
+    @include media("<desktop") {
+      padding-bottom: 5px;
+      font-size: 14px;
+    }
+  }
+
+  &:after {
+    content:'';   
+    position: absolute;
+    bottom: 100%; 
+    left: 20px;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;  //1й способ сделать трехугольник
+    border-top: 10px solid transparent;
+    border-bottom: 20px solid $light-blue;
+    //width: 20px;
+    //height: 20px;             //2ой способ сделать трехугольник
+    //background: $light-blue;
+    //transform: rotate(45deg);
+    //margin-bottom: -10px;
+  }
+}
+
+.social-logos {
+  
+  li {
+    display: inline-block;
+    vertical-align: top;
+  }
+  a {
+    background: none;
+    color: #2f6f6a;
+    text-decoration: none;
+    padding-right: 10px;
+  }
+}
+
+.position {
+  font-style: italic;
+  color: #767070;
+  font-size: 15px;
+  text-transform: none;
+}
+
+//`````````````````````````````````WHAT THAY SAYS```````````````````````````````````
+
+.what-they-says {
+  background: #f9fbfb;
+}
+
+.team-speach-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  @include media("<desktop") {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column {
+    height: 366px;
+    display: flex;
+    flex-wrap: wrap;
+    background: #eaebed;
+    justify-content: center;
+    text-align: center;
+
+    @include media("<tablet") {
+      height: 166px;
+    }
+
+    .man-wrapper {
+      position: relative;
+      width: 400px;
+      height: 366px;
+      text-align: center;
+
+      @include media("<tablet") {
+        width: 400px;
+        height: 166px;
+      }
+
+      img {
+        position: absolute;
+        transform: scale(.95);
+        left: 15px;
+        top: -40px;
+
+        @include media("<tablet") {
+          transform: scale(.5);
+          left: 15px;
+          top: -140px
+        }
+      } 
+    }
+
+    h3 {
+      font: bold 20px Merriweather;
+      text-transform: uppercase;
+      color: #1b1b1c;
+
+      @include media("<desktop") {
+        font: bold 16px Merriweather;
+      }
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      padding: 1px;
+
+      a {
+        filter: grayscale(100%);
+        filter: gray;
+
+        &:active {
+          filter:none;
+        }
+        &:hover {
+          filter:none;
+        }
+        i {
+          color: #f2da3b;
+        }
+      }
+    }
+  }
+}
+
+.block1 {
+  margin-right: 60px;
+
+  @include media("<desktop") {
+    margin: 40px 10% 40px;
+    width: 600px;
+  }
+  @include media("<tablet") {
+    margin: 10px 10% 50px;
+    width: 400px;
+  }
+}
+
+.block2 {
+  padding: 70px 82px 40px;
+  font-size: 16px Raleway;
+  color: #646565;
+  line-height: 1.5em;
+
+  @include media("<desktop") {
+    padding: 40px 50px 20px;
+    margin: 0 10%;
+    width: 600px;
+    font-size: 1.2em;
+  }
+  @include media("<tablet") {
+    width: 400px;
+    font-size: 0.8em;
+    padding: 10px 40px 20px;
+  }
+}
+
+//`````````````````````````````````LOGOS```````````````````````````````````
+
+.logolist {
+  @extend %listreset;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    padding-right: 30px;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    @include media("<tablet") {
+      padding-right: 10px;
+    }
+  }
+  a {
+    filter: grayscale(100%);
+    filter: gray;
+    &:hover {
+      filter:none;
+    }
+  }
+}
+
+// `````````````````````````````````CONTACTS FORM`````````````````````````````
+
+.contacts-block {
+  background-image: url('../images/winter.png');
+  color: #c1c6c9;
+}
+.contacts-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include media("<desktop") {
+    justify-content: center;
+  }
+
+  .form-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(#4a5862,0.8);
+    min-height: 460px;
+    line-height: 10px;
+    flex-direction: column;
+
+    @include media("<desktop") {
+      min-height: 50px;
+      flex-direction: row;
+    }
+
+    &.w45 {
+      width: 55%;
+      padding: 30px;
+      position: relative;
+
+      @include media("<desktop") {
+        width: 70%;
+        margin-bottom: 15px;
+      }
+    }
+
+    &.w40 {
+      width: 43%;
+      padding: 35px 20px 20px; 
+
+      @include media("<desktop") {
+        width: 70%;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+
+        &:hover {
+          opacity: .8;
+        }
+
+        &:visited { 
+          color: #FF0000;
+        }
+      } 
+    }
+
+    .row {
+      border-bottom: 1px solid #8a9ca2;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .input {
+        background:none; //или транспарент
+        border: none;
+        outline: 0; //убирает обводку
+      }
+
+      .button {
+        border:none;
+        background: #6eeee4;
+        padding: 20px 38px;
+        text-transform: uppercase;
+        margin-top: 40px;
+        color: #2e6b66;
+        font: 18px Montserrat;
+        transition: .5s linear;
+        display: inline-block;
+        
+        &:hover {
+          //padding: 10px 38px;
+          text-shadow: 0px 4px 4px #000000;
+          font: 20px Montserrat;
+        }
+
+        @include media("<desktop") {
+          font: 11px Montserrat;
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+}
+
+.frame-wrap { 
+  iframe {
+    max-width : 100%;
+    max-height: 255px;
+
+    @include media("<desktop") {
+      max-height: 120px;
+    }
+  }
+}
+
+.vert-al {
+  vertical-align: top;
+}
+
+textarea {
+  min-height: 200px;
+  width: 100%;
+}
+
+.btn-holder {
+  text-align: left;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FOOTER~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.footer {
+  background: #262b2e;
+  padding: 90px 0;
+  text-align: center;
+
+  @include media("<desktop") {
+    padding: 15px 0 25px;
+  }
+
+  .footer-title {
+    h5 {
+      font: bold 16px;
+      text-transform: uppercase;
+      color: white;
+      padding-bottom: 20px;
+
+      @include media("<desktop") { 
+        padding-bottom: 1px;
+        font: bold 12px; 
+      }
+    }
+  }
+
+  .social-logos {
+
+    li {
+    display: inline-block;
+    vertical-align: top;
+    padding:5px;
+
+      @include media("<desktop") {
+        padding: none;
+      }
+    }
+
+    a {
+      width: 45px;
+      height: 40px;
+      display: flex;
+      color:#bbb8b9;
+      background: #424648;
+      text-decoration: none;
+      align-items: center;
+      justify-content: center;
+      transition: .5s;
+
+      @include media("<desktop") { 
+        width: 25px;
+        height: 20px;
+      }
+
+      &:hover {
+        background: #6eeee4;
+        color: #262b2e;
+      }
+    }
+  }
+
+  .copyrights {
+    text-transform: uppercase;
+    color: #7e8081;
+    padding-top: 40px;
+
+    @include media("<desktop") {
+      padding-top: 20px;
+    }
+  }
+}
